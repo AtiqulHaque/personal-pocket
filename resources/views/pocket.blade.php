@@ -19,10 +19,15 @@
         <div>
             <div class="container">
                 <div class="content">
-                    @if(!empty($contents))
+                    <div class="row" style="margin-top : 10px; float: right;">
+                        <div class="col-md-12">
+                            {{ $contents['data']->links()}}
+                        </div>
+                    </div>
+                    @if(!empty($contents['data']))
                         <div class="row">
                             @foreach( $contents['data']->items() as $eachContent)
-                                <div class="col-md-3 m-2">
+                                <div class="col-md-3">
                                     <div class="card" style="width: 18rem;">
                                         <div class="card-body">
                                             <h5 class="card-title"> {{$eachContent->title}}</h5>
@@ -31,6 +36,11 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="row" style="margin-top : 10px; float: right;">
+                            <div class="col-md-12">
+                                {{ $contents['data']->links()}}
+                            </div>
                         </div>
                     @endif
                 </div>

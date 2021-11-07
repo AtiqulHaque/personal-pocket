@@ -19,9 +19,9 @@
         <div>
             <div class="container">
                 <div class="content">
-                    @if(!empty($contents))
+                    @if(!empty($contents['data']))
                         <div class="row" style="margin-top : 10px; float: right;">
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 {{ $contents['data']->links()}}
                             </div>
                         </div>

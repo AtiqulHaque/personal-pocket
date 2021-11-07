@@ -66,6 +66,14 @@ Without docker you can install this project by this
 
  - Pocket.postman_collection.json
  - POCKET.postman_environment.json
+ 
+ 
+ 
+***Extra Question Answer***
+
+- Say, the content site got hacked, therefore when fetching the content URL for
+  content parsing it can keep redirecting, how to solve this scenario?
+ - Answer: Check the http response code. 
 
 
 
