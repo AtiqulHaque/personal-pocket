@@ -12,7 +12,9 @@ After complete installation
 
 <br>
 
-***Frontend Browse :  http://localhost:3033***
+***Frontend Browse :  http://localhost:8000***
+
+***Api documentation :  http://localhost:8000/api/documentation***
 
 ***Backend Browse :  http://localhost:8000/api***
 
@@ -41,15 +43,6 @@ Without docker you can install this project by this
 
 - php artisan migrate --seed
 
-
-***Run booking command***
-
-- docker-compose exec app php artisan book:rooms
-
-***Run Unit Test***
-
-./run-unit-test
-
 ***Publish Documentation***
 
 - docker-compose exec app php artisan l5-swagger:generate
@@ -71,6 +64,5 @@ Without docker you can install this project by this
 
 ***For Backend API check Postman collection***
 
-- Room_Reservation.postman_collection.json
-- Room-reservation-dev.postman_environment.json
+
 
