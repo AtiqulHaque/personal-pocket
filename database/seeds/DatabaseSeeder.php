@@ -18,22 +18,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        Schema::disableForeignKeyConstraints();
-        \DB::table('bookings')->truncate();
-        Schema::enableForeignKeyConstraints();
-
-
-
-        Schema::disableForeignKeyConstraints();
-        $date = Carbon::now()->subDay();
-
-        for($i = 0; $i < 365; $i++){
-            $date = $date->addDay();
-            Booking::create([
-                "reservation_date" => $date
-            ]);
-        }
-
-        Schema::enableForeignKeyConstraints();
     }
 }
