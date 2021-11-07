@@ -23,5 +23,4 @@ class Pocket extends Model implements Transformable
      * @var array
      */
     protected $fillable = ['title', 'status'];
-
 }

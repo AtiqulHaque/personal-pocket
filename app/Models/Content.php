@@ -24,8 +24,4 @@ class Content extends Model implements Transformable
 
 
     protected $table = "site_contents";
-
-
-
-
 }

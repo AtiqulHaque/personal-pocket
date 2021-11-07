@@ -31,7 +31,4 @@ interface PocketContentServiceContract
      * @return bool
      */
     public function deleteContentByUrl(array $params);
-
-
-
 }

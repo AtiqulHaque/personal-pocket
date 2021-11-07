@@ -17,6 +17,4 @@ interface TagRepository extends RepositoryInterface
     public function attachTags($siteId, array $hashes);
 
     public function getContentByTags($tagNames);
-
-
 }

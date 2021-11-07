@@ -64,5 +64,8 @@ Without docker you can install this project by this
 
 ***For Backend API check Postman collection***
 
+ - Pocket.postman_collection.json
+ - POCKET.postman_environment.json
+
 
 
