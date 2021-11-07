@@ -1,0 +1,250 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Save site into your pocket",
+        "version": "0.1"
+    },
+    "paths": {
+        "/pocket": {
+            "get": {
+                "tags": [
+                    "Pocket"
+                ],
+                "summary": "Get pocket all pocket listing",
+                "description": "Get pocket all pocket listing",
+                "operationId": "Gett Pocket listing",
+                "requestBody": {
+                    "description": "Pass page nubmer",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "page": {
+                                        "type": "int",
+                                        "example": "1 or 2 or any int"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "500": {
+                        "description": "Bad Request With Params"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/pocket/create": {
+            "post": {
+                "tags": [
+                    "Pocket"
+                ],
+                "summary": "Create pocket",
+                "description": "Create pocket",
+                "operationId": "Pocket content",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Create pocket with a name"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/pocket-site/{pocket_id}": {
+            "get": {
+                "tags": [
+                    "PocketContent"
+                ],
+                "summary": "Get pocket content by pocket id",
+                "description": "Get pocket content by pocket id",
+                "operationId": "Pocket content by pocket id",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "pocket_id"
+                                ],
+                                "properties": {
+                                    "pocket_id": {
+                                        "type": "int",
+                                        "example": "1 or 2 or any int"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "500": {
+                        "description": "Bad Request With Params"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/pocket-site/create": {
+            "post": {
+                "tags": [
+                    "PocketContent"
+                ],
+                "summary": "Create pocket",
+                "description": "Create pocket",
+                "operationId": "Pocket content",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "pocket_id",
+                                    "site_url"
+                                ],
+                                "properties": {
+                                    "pocket_id": {
+                                        "type": "int",
+                                        "example": "1 or 2 or any int"
+                                    },
+                                    "site_url": {
+                                        "type": "string",
+                                        "example": "Any site url"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/pocket/content": {
+            "post": {
+                "tags": [
+                    "PocketContent"
+                ],
+                "summary": "Get pocket content by Hashtags",
+                "description": "Get pocket content by Hashtags",
+                "operationId": "Pocket content by Hashtags",
+                "requestBody": {
+                    "description": "Set hashtag for get content",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "hash"
+                                ],
+                                "properties": {
+                                    "hash": {
+                                        "type": "string",
+                                        "example": "#anystring\n     * with space for multiple hashtags like #media #cricket"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "500": {
+                        "description": "Bad Request With Params"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/pocket/content/delete": {
+            "post": {
+                "tags": [
+                    "PocketContent"
+                ],
+                "summary": "Delete pocket content by URL",
+                "description": "Delete pocket content by URL",
+                "operationId": "Pocket content delete by url",
+                "requestBody": {
+                    "description": "Delete pocket content by URL",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "site_url"
+                                ],
+                                "properties": {
+                                    "site_url": {
+                                        "type": "string",
+                                        "example": "Any site url"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "500": {
+                        "description": "Bad Request With Params"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    }
+}

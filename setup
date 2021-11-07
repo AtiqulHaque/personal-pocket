@@ -1,0 +1,43 @@
+#!/bin/bash
+docker run --rm -v $(pwd):/app composer install
+
+sudo chown -R $USER:$USER ./
+
+echo "Making .env file ..."
+cp .env.example .env
+
+
+COMPOSE="docker-compose -f docker-compose.yml"
+
+echo "Build and Run docker images ..."
+$COMPOSE up -d --build
+
+GENERATE_KEY="docker-compose exec app php artisan key:generate"
+
+echo "Generating key ..."
+
+$GENERATE_KEY
+
+#GENERATE_JWT_KEY="docker-compose exec app php artisan migrate --seed"
+
+echo "Generating table and seeds"
+
+#$GENERATE_JWT_KEY
+
+
+echo -e "\nFrontend Browse :  http://localhost:3033\n"
+
+echo -e "Backend Browse :  http://localhost:8000/api\n"
+
+echo -e "Database Browse :  http://localhost:8085\n"
+
+echo -e "Log Browse :  http://localhost:8085/logs\n"
+
+echo -e "Database Credentials :  Server=database,  username=postgres,  password=secret \n"
+
+
+echo "Queue Running... "
+
+$GENERATE_QUEUE_START_COMMAND = "docker-compose exec app php artisan queue:work --tries=2 --delay=2"
+
+$GENERATE_QUEUE_START_COMMAND
