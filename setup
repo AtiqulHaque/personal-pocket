@@ -38,7 +38,7 @@ echo -e "Api docmentation :  http://localhost:8000/api/documentation\n"
 echo -e "Database Credentials :  Server=database,  username=postgres,  password=secret \n"
 
 
-echo "Queue Running... "
+echo -e "Queue Running... \n"
 
 $GENERATE_QUEUE_START_COMMAND = "docker-compose exec app php artisan queue:work --tries=2 --delay=2"
 
