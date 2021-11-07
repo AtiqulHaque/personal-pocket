@@ -40,19 +40,20 @@ class PocketTest extends TestCase
 
     public function testPocketServiceCreateWithFailed()
     {
-        $this->expectException(Exception::class);
-
         $this->pocketValidatorMock = $this->app->make(PocketValidator::class);
 
         $this->pocketRepositoryMock =  Mockery::mock((PocketRepository::class));
 
         $this->pocketRepositoryMock->shouldReceive('createPocket')
-            ->willThrowException(new Exception("error"));
+            ->once()
+            ->andReturn([]);
 
 
         $pocketService = new PocketService($this->pocketRepositoryMock, $this->pocketValidatorMock);
 
-        $pocketService->createPocket("title");
+        $response = $pocketService->createPocket("title");
+        $this->assertEquals('error', $response['status']);
+        $this->assertEquals(null, $response['data']);
     }
 
 

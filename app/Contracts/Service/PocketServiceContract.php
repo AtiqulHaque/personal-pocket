@@ -14,6 +14,4 @@ interface PocketServiceContract
      */
     public function createPocket($title);
 
-
-    public function getPocketDetails($pocket_id);
 }

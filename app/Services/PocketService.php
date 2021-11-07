@@ -55,21 +55,22 @@ class PocketService implements PocketServiceContract
 
         try {
             $pocket = $this->pocketRepo->createPocket($title);
-
-            return [
-                "status" => 'success',
-                'data'   => $pocket
-            ];
+            if (!empty($pocket)) {
+                return [
+                    "status" => 'success',
+                    'data'   => $pocket
+                ];
+            } else {
+                return [
+                    "status" => 'error',
+                    'data'   => null
+                ];
+            }
         } catch (Exception $e) {
             return [
                 "status" => 'error',
                 'html'   => "Something went wrong!!! while creating pocket"
             ];
         }
-    }
-
-    public function getPocketDetails($pocket_id)
-    {
-        // TODO: Implement getPocketDetails() method.
     }
 }
