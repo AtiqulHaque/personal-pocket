@@ -33,6 +33,8 @@ echo -e "Database Browse :  http://localhost:8085\n"
 
 echo -e "Log Browse :  http://localhost:8085/logs\n"
 
+echo -e "Api docmentation :  http://localhost:8000/api/documentation\n"
+
 echo -e "Database Credentials :  Server=database,  username=postgres,  password=secret \n"
 
 
