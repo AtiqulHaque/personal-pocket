@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "c7cd5ab8-1e9a-4ab7-b46e-dae170e4101a",
+		"name": "Pocket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Pockets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pocket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pocket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pocket_id\" : 3,\n    \"site_url\" : \"https://docs.microsoft.com/en-us/dotnet/api/system.random?view=net-5.0\",\n    \"hash\" : \"#testQueue\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/pocket/site/create",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"pocket",
+						"site",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create pocket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"Docker related content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/pocket/create",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"pocket",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get content by hashtag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"hash\" : \"#testQueue\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/pocket/content",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"pocket",
+						"content"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete site  by URL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"site_url\" : \"https://www.youxxcxctube.com/watch?v=M5YM6ouOW3E\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/pocket/content/delete",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"pocket",
+						"content",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get content by pocket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/pocket/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"pocket",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
