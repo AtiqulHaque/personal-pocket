@@ -73,7 +73,18 @@ Without docker you can install this project by this
 
 - Say, the content site got hacked, therefore when fetching the content URL for
   content parsing it can keep redirecting, how to solve this scenario?
- - Answer: Check the http response code. 
-
-
-
+ - Answer: 
+      - Check the http response code.
+      - Maintaining a history.
+ 
+ - Say, the content site got hacked, therefore when fetching the content URL for
+   content parsing it can inject virus / malware / adware. how to guard this?
+  - Answer: 
+    -   Create a pattern database replace all 
+        content which match with this content form database
+    -   Use Regular expression matching.
+  
+  
+  - Say, that URL can contain NSFW contents, how to flag NSFW? so that those
+    don't get included in the suggestion system we may develop in future?
+   - Answer: 
