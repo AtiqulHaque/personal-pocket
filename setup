@@ -31,15 +31,5 @@ echo -e "Backend Browse :  http://localhost:8000/api\n"
 
 echo -e "Database Browse :  http://localhost:8085\n"
 
-echo -e "Log Browse :  http://localhost:8085/logs\n"
+echo -e "Database Credentials :  Server=my_db,  username=root,  password=your_mysql_root_password \n"
 
-echo -e "Api docmentation :  http://localhost:8000/api/documentation\n"
-
-echo -e "Database Credentials :  Server=database,  username=postgres,  password=secret \n"
-
-
-echo -e "Queue Running... \n"
-
-$GENERATE_QUEUE_START_COMMAND = "docker-compose exec app php artisan queue:work --tries=2 --delay=2"
-
-$GENERATE_QUEUE_START_COMMAND
