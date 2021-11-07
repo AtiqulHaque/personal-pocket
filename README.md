@@ -10,6 +10,8 @@ Enter your root password
 
 After complete installation
 
+
+
 <br>
 
 ***Frontend Browse :  http://localhost:8000***
@@ -23,6 +25,12 @@ After complete installation
 ***Database Credentials :  System= PostgresSQL, Server=database,  username=postgres,  password=secret*** 
 
 <br>
+
+Implement github action hook  test unit test.
+
+Beside that 
+run : ./run-unit-test   
+for unit test checking.
 <br>
 
 
