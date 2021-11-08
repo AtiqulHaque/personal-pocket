@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Crawler;
 
 use App\Contracts\Service\CrawlerServiceContract;
 use App\Contracts\Service\ResponseProcessor;
@@ -23,18 +23,17 @@ class CrawlerService implements CrawlerServiceContract
      */
     private $responseProcessor;
 
-    public function __construct($siteUrl = null)
+    public function __construct()
     {
         $this->httpClient = new Client();
-        $this->siteUrl = $siteUrl;
     }
 
 
     /**
-     * @param $url
+     * @param SiteUrl $url
      * @return $this
      */
-    public function setSiteUrl($url)
+    public function setSiteUrl(SiteUrl $url)
     {
         $this->siteUrl = $url;
         return $this;
@@ -57,7 +56,7 @@ class CrawlerService implements CrawlerServiceContract
      */
     public function crawl()
     {
-        $response = $this->httpClient->get($this->siteUrl);
+        $response = $this->httpClient->get($this->siteUrl->getFullUrl());
         $htmlString = (string) $response->getBody();
         libxml_use_internal_errors(true);
         $doc = new DOMDocument();

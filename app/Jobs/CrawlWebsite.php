@@ -4,8 +4,9 @@ namespace App\Jobs;
 
 use App\Contracts\ContentRepository;
 use App\Models\SiteContent;
-use App\Services\CrawlerService;
-use App\Services\HtmlResponseProcessor;
+use App\Services\Crawler\CrawlerService;
+use App\Services\Crawler\HtmlResponseProcessor;
+use App\Services\Crawler\SiteUrl;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Queueable;
@@ -55,7 +56,7 @@ class CrawlWebsite implements ShouldQueue
         try {
             $this->contentRepo = App::make(ContentRepository::class);
             $crawler = new CrawlerService();
-            $crawler->setSiteUrl($this->siteURL);
+            $crawler->setSiteUrl(new SiteUrl($this->siteURL));
             $crawler->setResponseProcessor(new HtmlResponseProcessor());
             $response = $response = $crawler->crawl();
             $this->contentRepo->createSiteContent($this->siteId, $response);

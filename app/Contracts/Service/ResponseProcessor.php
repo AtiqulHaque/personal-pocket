@@ -3,14 +3,15 @@
 
 namespace App\Contracts\Service;
 
-use App\Services\HtmlResponse;
+use App\Services\Crawler\HtmlResponse;
+use App\Services\Crawler\SiteUrl;
 
 interface ResponseProcessor
 {
     /**
      * @param $htmlDoc
-     * @param $siteUrl
+     * @param SiteUrl $siteUrl
      * @return HtmlResponse
      */
-    public function processResponse($htmlDoc, $siteUrl);
+    public function processResponse($htmlDoc, SiteUrl $siteUrl);
 }

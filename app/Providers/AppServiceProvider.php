@@ -7,13 +7,9 @@ use App\Contracts\Service\NewServiceContract;
 use App\Contracts\Service\PocketContentServiceContract;
 use App\Contracts\Service\PocketServiceContract;
 use App\Contracts\Service\ResponseProcessor;
-use App\Contracts\Service\UserServiceContract;
-use App\Services\BookingService;
-use App\Services\HtmlResponseProcessor;
-use App\Services\NewService;
+use App\Services\Crawler\HtmlResponseProcessor;
 use App\Services\PocketContentService;
 use App\Services\PocketService;
-use App\Services\UserService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

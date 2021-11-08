@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Services;
+
+namespace App\Services\Crawler;
 
 use App\Contracts\ContentRepository;
 use App\Contracts\Service\ResponseProcessor;
@@ -12,10 +13,10 @@ class HtmlResponseProcessor implements ResponseProcessor
 
     /**
      * @param $htmlDoc
-     * @param $siteUrl
+     * @param SiteUrl $siteUrl
      * @return HtmlResponse
      */
-    public function processResponse($htmlDoc, $siteUrl)
+    public function processResponse($htmlDoc, SiteUrl $siteUrl)
     {
         $xpath      = new DOMXPath($htmlDoc);
         $response   = new HtmlResponse();

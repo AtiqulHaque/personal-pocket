@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Crawler;
 
 use App\Contracts\ContentRepository;
 use App\Contracts\Service\ResponseProcessor;
