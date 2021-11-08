@@ -4,8 +4,10 @@ namespace App\Services;
 
 use App\Contracts\PocketRepository;
 use App\Contracts\Service\PocketServiceContract;
+use App\Exceptions\PocketCreateException;
 use App\Validators\PocketValidator;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class PocketService implements PocketServiceContract
 {
@@ -66,7 +68,8 @@ class PocketService implements PocketServiceContract
                     'data'   => null
                 ];
             }
-        } catch (Exception $e) {
+        } catch (PocketCreateException $e) {
+            Log::error("Error occurred when creating pocket from Service.", [$e]);
             return [
                 "status" => 'error',
                 'html'   => "Something went wrong!!! while creating pocket"

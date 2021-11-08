@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\CreateContentException;
+use App\Exceptions\DeleteContentException;
+use App\Exceptions\SiteContentNotFoundException;
 use Exception;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
@@ -52,10 +55,16 @@ class SiteContentRepositoryEloquent extends BaseRepository implements SiteConten
     /**
      * @param $packetId
      * @return LengthAwarePaginator
+     * @throws SiteContentNotFoundException
      */
     public function getContentByPocketId($packetId)
     {
-        return $this->model->with(['contents'])->where('pocket_id', $packetId)->paginate();
+        try {
+            return $this->model->with(['contents'])->where('pocket_id', $packetId)->paginate();
+        } catch (Exception $e) {
+            Log::error("Error occurred when getting by pocket id from repository.", [$e]);
+            throw new SiteContentNotFoundException('Error occurred when getting by pocket id from repository');
+        }
     }
 
     /**
@@ -69,7 +78,7 @@ class SiteContentRepositoryEloquent extends BaseRepository implements SiteConten
             return $this->create($params);
         } catch (Exception $e) {
             Log::error("Error occurred when creating pocket from repository.", [$e]);
-            throw new Exception('Exception occurred Creating pocket failed');
+            throw new CreateContentException('Exception occurred Creating pocket failed');
         }
     }
 
@@ -85,7 +94,7 @@ class SiteContentRepositoryEloquent extends BaseRepository implements SiteConten
             return $this->model->where('site_url', $site_url)->delete();
         } catch (Exception $e) {
             Log::error("Error occurred when deleting content from pocket.", [$e]);
-            throw new Exception('Error occurred when deleting content from pocket');
+            throw new DeleteContentException('Error occurred when deleting content from pocket');
         }
     }
 }

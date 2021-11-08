@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\PocketCreateException;
 use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -49,7 +50,7 @@ class PocketRepositoryEloquent extends BaseRepository implements PocketRepositor
     /**
      * @param $title
      * @return Pocket
-     * @throws Exception
+     * @throws PocketCreateException
      */
     public function createPocket($title)
     {
@@ -60,7 +61,7 @@ class PocketRepositoryEloquent extends BaseRepository implements PocketRepositor
             ]);
         } catch (Exception $e) {
             Log::error("Error occurred when creating pocket from repository.", [$e]);
-            throw new Exception('Exception occurred Creating pocket failed');
+            throw new PocketCreateException('Exception occurred Creating pocket failed');
         }
     }
 }

@@ -9,11 +9,12 @@ use App\Contracts\Service\PocketServiceContract;
 use App\Contracts\Service\ResponseProcessor;
 use App\Contracts\SiteContentRepository;
 use App\Contracts\TagRepository;
+use App\Exceptions\CreateContentException;
+use App\Exceptions\DeleteContentException;
+use App\Exceptions\SiteContentNotFoundException;
 use App\Jobs\CrawlWebsite;
-use App\Models\SiteContent;
 use App\Validators\PocketValidator;
 use Exception;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
 class PocketContentService implements PocketContentServiceContract
@@ -100,7 +101,7 @@ class PocketContentService implements PocketContentServiceContract
                 "status" => 'success',
                 'data'   => $pocketContentData
             ];
-        } catch (Exception $e) {
+        } catch (CreateContentException $e) {
             Log::error("Error occurred while creating pocketContentData content.", [$e]);
             return [
                 "status" => 'error',
@@ -120,7 +121,7 @@ class PocketContentService implements PocketContentServiceContract
                 "status" => 'success',
                 'data'   => $this->pocketContentRepo->getContentByPocketId($packetId)
             ];
-        } catch (Exception $e) {
+        } catch (SiteContentNotFoundException $e) {
             Log::error("Error occurred when getting pocket content.", [$e->getMessage()]);
             return [
                 "status" => 'error',
@@ -209,7 +210,7 @@ class PocketContentService implements PocketContentServiceContract
                 "status" => 'success',
                 'data'   =>  $this->pocketContentRepo->deleteContentByUrl($params['site_url'])
             ];
-        } catch (Exception $e) {
+        } catch (DeleteContentException $e) {
             Log::error("Error occurred while deleting content.", [$e->getMessage()]);
             return [
                 "status" => 'error',
